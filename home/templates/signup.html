@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taiste</title>
+
+    <!-- CSS -->
+    <link rel="sshortcut icon" href="https://i.imgur.com/k0i04jY.png"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            color: #ecf0f1;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            text-align: center;
+        }
+
+    </style>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: #2c3e50">
+
+<div class="container" style="padding-top: 50px">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" style="text-align: center">
+            <hr/>
+
+            <p style="font-size: 60px; letter-spacing: 20px;">TA<span style="padding-left: 1px; padding-right:14px"><img
+                    src="https://i.imgur.com/xcRGxds.png" width="50" height="50" align="top"></span>STE</p>
+
+            <div class="col-md-2"></div>
+            <hr/>
+            <p style="font-size: 20px;">Practical machine learning</p>
+            <p><i>Product recommendation that maximizes sales</i></p><br/>
+            <p>Subscribe below to hear more!</p>
+            {% if post_success != None %}
+            {% if post_success == True %}
+            <div class="alert alert-success">
+                Successfully subscribed to taiste!
+            </div>
+            {% else %}
+            <div class="alert alert-danger">
+                Seems like you're already subscribed!
+            </div>
+            {% endif %}
+            {% endif %}
+            <form action="/" method="post">
+                {% csrf_token %}
+                <input type="text" id="{{ form.email.auto_id }}" name="{{ form.email.name }}" class="form-control"
+                       placeholder="Email" required/><br/>
+                <input type="submit" class="form-control btn btn-primary" value="Subscribe"/>
+            </form>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; taiste.tech 2016</p>
+    </div>
+</footer>
+
+</body>
+
+
+</html>
